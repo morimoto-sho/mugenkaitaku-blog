@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { background: #F6F8FB; color: #1B2A3A; line-height: 1.9; }
+
+.prose-blog h2 {
+  font-size: 1.5rem; font-weight: 700; color: #0F2C4D;
+  background: #F1F5FA; border-bottom: 4px solid #E26A2C;
+  padding: 1rem 0 0.75rem 1.25rem; margin-top: 3rem; margin-bottom: 1.25rem;
+}
+.prose-blog h3 {
+  font-size: 1.125rem; font-weight: 700; color: #0F2C4D;
+  border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem;
+  margin-top: 2rem; margin-bottom: 0.75rem;
+}
+.prose-blog p { margin: 0 0 1.125rem; font-size: 1rem; }
+.prose-blog strong { color: #091C36; background: linear-gradient(transparent 65%, rgba(226,106,44,.25) 65%); padding: 0 2px; }
+.prose-blog img { width: 100%; height: auto; border-radius: 12px; margin: 1.5rem 0; display: block; }
+.prose-blog a { color: #E26A2C; text-decoration: underline; }
