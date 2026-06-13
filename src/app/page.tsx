@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPosts, excerpt } from '@/lib/microcms';
+import { getHeroImage } from '@/lib/articleImages';
 
 export const revalidate = 60;
 
@@ -22,23 +23,26 @@ export default async function Home() {
           <p className="text-muted">記事を準備中です。</p>
         ) : (
           <ul className="space-y-8">
-            {data.contents.map((post) => (
-              <li key={post.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
-                <Link href={`/blog/${post.id}`} className="block group">
-                  {post.eyecatch && (
-                    <img src={post.eyecatch.url} alt={post.title} className="w-full h-48 object-cover rounded-lg mb-4" />
-                  )}
-                  <div className="flex items-center gap-3 text-xs text-muted mb-2">
-                    {post.category && (
-                      <span className="bg-navy text-white px-3 py-1 rounded-full">{post.category.name}</span>
+            {data.contents.map((post) => {
+              const heroSrc = post.eyecatch?.url || getHeroImage(post.id);
+              return (
+                <li key={post.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                  <Link href={`/blog/${post.id}`} className="block group">
+                    {heroSrc && (
+                      <img src={heroSrc} alt={post.title} className="w-full h-48 object-cover rounded-lg mb-4" />
                     )}
-                    <time dateTime={post.publishedAt}>{new Date(post.publishedAt).toLocaleDateString('ja-JP')}</time>
-                  </div>
-                  <h3 className="text-lg font-bold text-navy-dark group-hover:text-accent transition">{post.title}</h3>
-                  <p className="text-sm text-muted mt-2 line-clamp-2">{excerpt(post.metaDescription || post.content, 120)}</p>
-                </Link>
-              </li>
-            ))}
+                    <div className="flex items-center gap-3 text-xs text-muted mb-2">
+                      {post.category && (
+                        <span className="bg-navy text-white px-3 py-1 rounded-full">{post.category.name}</span>
+                      )}
+                      <time dateTime={post.publishedAt}>{new Date(post.publishedAt).toLocaleDateString('ja-JP')}</time>
+                    </div>
+                    <h3 className="text-lg font-bold text-navy-dark group-hover:text-accent transition">{post.title}</h3>
+                    <p className="text-sm text-muted mt-2 line-clamp-2">{excerpt(post.metaDescription || post.content, 120)}</p>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         )}
       </section>

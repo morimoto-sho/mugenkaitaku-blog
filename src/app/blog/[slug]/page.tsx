@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getPost, getAllSlugs, stripHtml, excerpt } from '@/lib/microcms';
+import { getPost, getAllSlugs, excerpt } from '@/lib/microcms';
+import { articleImages, injectSectionImages, getHeroImage } from '@/lib/articleImages';
 
 export const revalidate = 60;
 
@@ -14,6 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug).catch(() => null);
   if (!post) return {};
   const desc = excerpt(post.metaDescription || post.content, 140);
+  const heroUrl = post.eyecatch?.url || getHeroImage(slug);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.mugenkaitaku.com';
   return {
     title: post.title,
     description: desc,
@@ -22,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: desc,
       type: 'article',
       publishedTime: post.publishedAt,
-      images: post.eyecatch ? [{ url: post.eyecatch.url }] : undefined,
+      images: heroUrl ? [{ url: heroUrl.startsWith('http') ? heroUrl : `${baseUrl}${heroUrl}` }] : undefined,
     },
     alternates: { canonical: `/blog/${slug}` },
   };
@@ -34,6 +37,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
 
   const desc = excerpt(post.metaDescription || post.content, 140);
+
+  // hero image: 優先順位 = microCMSのeyecatch > 設定マップ
+  const heroSrc = post.eyecatch?.url || getHeroImage(slug);
+
+  // 本文HTMLにセクション画像を注入
+  const imageSet = articleImages[slug];
+  const contentWithImages = imageSet
+    ? injectSectionImages(post.content, imageSet.sections)
+    : post.content;
 
   return (
     <article className="max-w-content mx-auto px-6 py-12">
@@ -47,9 +59,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <h1 className="text-2xl md:text-3xl font-bold text-navy-dark leading-snug mb-6">{post.title}</h1>
 
-      {post.eyecatch && (
+      {heroSrc && (
         <img
-          src={post.eyecatch.url}
+          src={heroSrc}
           alt={post.title}
           className="w-full rounded-xl mb-8"
         />
@@ -57,7 +69,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div
         className="prose-blog"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: contentWithImages }}
       />
 
       <div className="mt-16">
@@ -81,7 +93,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             dateModified: post.revisedAt,
             author: { '@type': 'Organization', name: post.author?.trim() || '無限開拓編集部' },
             publisher: { '@type': 'Organization', name: '無限開拓', logo: { '@type': 'ImageObject', url: 'https://www.mugenkaitaku.com/logo.png' } },
-            image: post.eyecatch?.url,
+            image: heroSrc,
           }),
         }}
       />
