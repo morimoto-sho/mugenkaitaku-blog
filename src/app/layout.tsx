@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+
+const GSC_TOKEN = process.env.NEXT_PUBLIC_GSC_TOKEN;
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.mugenkaitaku.com'),
@@ -11,11 +17,32 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image' },
   alternates: { canonical: '/' },
+  // Google Search Console所有権確認用メタタグ
+  ...(GSC_TOKEN ? { verification: { google: GSC_TOKEN } } : {}),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        {/* Google Analytics 4 */}
+        {GA4_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA4_ID}');
+              `}
+            </Script>
+          </>
+        )}
+      </head>
       <body className="font-sans">
         <header className="bg-white border-b border-line">
           <div className="max-w-content mx-auto px-6 py-5 flex items-center justify-between">
@@ -37,6 +64,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p className="text-muted">© 無限開拓｜営業DX・人脈戦略・オンライン秘書サービス</p>
           </div>
         </footer>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
