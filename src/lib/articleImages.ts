@@ -24,7 +24,7 @@ export const articleImages: Record<string, ArticleImageSet> = {
     sections: ['w3_02_problems.png', 'w3_03_principles.png'],
   },
   // W4: BtoB営業リストの作り方完全版
-  'e0_wzqqfv4': {
+  'w75tpfa6x0-a': {
     hero: 'w4_01_hero.png',
     sections: ['w4_02_problems.png', 'w4_03_solution.png'],
   },
