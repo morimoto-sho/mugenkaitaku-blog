@@ -28,6 +28,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w4_01_hero.png',
     sections: ['w4_02_problems.png', 'w4_03_solution.png'],
   },
+
+  // W5: 法人営業×AI 2026年に営業現場が変わる5つの場面
+  '08998rre8d3': {
+    hero: 'w5_01_hero.png',
+    sections: ['w5_02_problems.png', 'w5_03_solution.png'],
+  },
 };
 
 /**
