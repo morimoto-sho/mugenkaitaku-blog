@@ -34,6 +34,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w5_01_hero.png',
     sections: ['w5_02_problems.png', 'w5_03_solution.png'],
   },
+
+  // W6: 営業KPIの設計 行動量から商談化率へ
+  'hx4zcmy_6iwv': {
+    hero: 'w6_01_hero.png',
+    sections: ['w6_02_problems.png', 'w6_03_solution.png'],
+  },
 };
 
 /**
