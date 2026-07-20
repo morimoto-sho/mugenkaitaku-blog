@@ -40,6 +40,17 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w6_01_hero.png',
     sections: ['w6_02_problems.png', 'w6_03_solution.png'],
   },
+  // W7: 営業代行と営業アウトソースの違い
+  'aogjf7aw1kas': {
+    hero: 'w7_01_hero.png',
+    sections: ['w7_02_problems.png', 'w7_03_solution.png'],
+  },
+
+  // W8: インサイドセールス組織の立ち上げ手順
+  'c060guy3p': {
+    hero: 'w8_01_hero.png',
+    sections: ['w8_02_problems.png', 'w8_03_solution.png'],
+  },
 };
 
 /**
