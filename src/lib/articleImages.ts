@@ -51,6 +51,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w8_01_hero.png',
     sections: ['w8_02_problems.png', 'w8_03_solution.png'],
   },
+
+  // W9: 営業DXに失敗する企業の共通点5つ
+  '2891yo38i57': {
+    hero: 'w9_01_hero.png',
+    sections: ['w9_02_problems.png', 'w9_03_solution.png'],
+  },
 };
 
 /**
