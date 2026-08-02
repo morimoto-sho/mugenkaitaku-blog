@@ -57,6 +57,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w9_01_hero.png',
     sections: ['w9_02_problems.png', 'w9_03_solution.png'],
   },
+
+  // W10: 経営者が法人営業に投じるべきリソース配分の考え方
+  'p7_v1d87l1q': {
+    hero: 'w10_01_hero.png',
+    sections: ['w10_02_problems.png', 'w10_03_solution.png'],
+  },
 };
 
 /**
