@@ -63,6 +63,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w10_01_hero.png',
     sections: ['w10_02_problems.png', 'w10_03_solution.png'],
   },
+
+  // W11: 業界別・法人営業の勝ち筋 SaaS／製造業／士業の3パターン
+  'lhzc8yk40_m2': {
+    hero: 'w11_01_hero.png',
+    sections: ['w11_02_problems.png', 'w11_03_solution.png'],
+  },
 };
 
 /**
