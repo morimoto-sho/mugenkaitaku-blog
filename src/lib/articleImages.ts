@@ -69,6 +69,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w11_01_hero.png',
     sections: ['w11_02_problems.png', 'w11_03_solution.png'],
   },
+
+  // W12: 2026年後半〜2027年の法人営業トレンド10選
+  'p6kou2804': {
+    hero: 'w12_01_hero.png',
+    sections: ['w12_02_problems.png', 'w12_03_solution.png'],
+  },
 };
 
 /**
