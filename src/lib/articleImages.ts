@@ -75,6 +75,11 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w12_01_hero.png',
     sections: ['w12_02_problems.png', 'w12_03_solution.png'],
   },
+  // W13: 営業目標が未達のときに打つ手
+  'ofxv9epyg': {
+    hero: 'w13_01_hero.png',
+    sections: ['w13_02_problems.png', 'w13_03_solution.png'],
+  },
 };
 
 /**
