@@ -80,6 +80,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w13_01_hero.png',
     sections: ['w13_02_problems.png', 'w13_03_solution.png'],
   },
+
+  // W14: 新規開拓のコストを分解する 1商談あたり単価の計算式と考え方
+  '27yke_rj-vip': {
+    hero: 'w14_01_hero.png',
+    sections: ['w14_02_problems.png', 'w14_03_solution.png'],
+  },
 };
 
 /**
