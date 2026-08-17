@@ -86,6 +86,12 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w14_01_hero.png',
     sections: ['w14_02_problems.png', 'w14_03_solution.png'],
   },
+
+  // W15: 法人営業のよくある質問30 現場のつまずきを一問一答で解決
+  'bsxzfk4l19do': {
+    hero: 'w15_01_hero.png',
+    sections: ['w15_02_problems.png', 'w15_03_solution.png'],
+  },
 };
 
 /**
