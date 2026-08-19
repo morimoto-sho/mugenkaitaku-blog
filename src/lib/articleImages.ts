@@ -92,6 +92,11 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w15_01_hero.png',
     sections: ['w15_02_problems.png', 'w15_03_solution.png'],
   },
+  // W16: 営業支援ツールの選び分け SFA MA リスト フォーム送信を比較する視点
+  '0i6jhfflid': {
+    hero: 'w16_01_hero.png',
+    sections: ['w16_02_problems.png', 'w16_03_solution.png'],
+  },
 };
 
 /**
