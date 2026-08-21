@@ -97,6 +97,11 @@ export const articleImages: Record<string, ArticleImageSet> = {
     hero: 'w16_01_hero.png',
     sections: ['w16_02_problems.png', 'w16_03_solution.png'],
   },
+  // W17: 営業が育たない会社の共通点 属人化を解く仕組みづくり
+  'bx8_sn1lor': {
+    hero: 'w17_01_hero.png',
+    sections: ['w17_02_problems.png', 'w17_03_solution.png'],
+  },
 };
 
 /**
